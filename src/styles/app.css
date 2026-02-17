@@ -1,0 +1,14 @@
+* { box-sizing: border-box; font-family: Inter, system-ui, sans-serif; }
+body { margin: 0; }
+.topnav { display: flex; gap: 12px; padding: 10px 14px; border-bottom: 1px solid #ddd; }
+.padded { padding: 16px; }
+.studio { display: grid; grid-template-columns: 260px 1fr 260px; min-height: calc(100vh - 52px); }
+.studio > aside, .studio > main { border-right: 1px solid #eee; padding: 10px; overflow: auto; }
+.studio > aside:last-child { border-right: 0; }
+.item { border: 1px solid #ddd; padding: 8px; margin-bottom: 8px; cursor: pointer; }
+.item.active { background: #f6f6ff; }
+.toolbar { display: flex; gap: 6px; margin: 8px 0; }
+input { width: 100%; padding: 8px; margin: 8px 0; }
+button { margin: 2px; }
+.chip { display: inline-block; border-radius: 10px; background: #eef; padding: 3px 8px; margin: 2px; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 10px; margin: 8px 0; }
