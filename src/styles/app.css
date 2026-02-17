@@ -1,0 +1,422 @@
+/* ── CSS Custom Properties ─────────────────────────── */
+:root {
+  --bg: #ffffff;
+  --bg-alt: #f8f9fa;
+  --bg-hover: #f0f1f3;
+  --bg-active: #e8eaff;
+  --border: #e0e0e0;
+  --border-light: #eee;
+  --text: #1a1a2e;
+  --text-muted: #666;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+  --radius: 6px;
+  --radius-lg: 10px;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --topnav-h: 48px;
+  --sidebar-w: 260px;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+/* ── Reset ────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+/* ── Top Nav ──────────────────────────────────────── */
+.topnav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 12px;
+  height: var(--topnav-h);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+.topnav a {
+  padding: 6px 14px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+.topnav a:hover {
+  background: var(--bg-hover);
+}
+.topnav a.active {
+  background: var(--bg-active);
+  color: var(--primary);
+}
+.topnav .app-title {
+  font-weight: 700;
+  font-size: 15px;
+  margin-right: 12px;
+  color: var(--primary);
+}
+
+/* ── Layout ───────────────────────────────────────── */
+.app-content {
+  height: calc(100vh - var(--topnav-h));
+  overflow: hidden;
+}
+.padded {
+  padding: 20px 24px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+/* Studio 3-panel layout */
+.studio {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr var(--sidebar-w);
+  height: 100%;
+}
+.studio > .panel {
+  border-right: 1px solid var(--border-light);
+  overflow-y: auto;
+  padding: 12px;
+}
+.studio > .panel:last-child {
+  border-right: 0;
+}
+.studio > .panel-main {
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Buttons ──────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn:hover {
+  background: var(--bg-hover);
+}
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+  border-color: var(--danger);
+}
+.btn-danger:hover {
+  background: var(--danger-hover);
+}
+.btn-cancel {
+  background: var(--bg);
+}
+.btn-sm {
+  padding: 3px 8px;
+  font-size: 12px;
+}
+.btn-icon {
+  padding: 4px 8px;
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* ── Sidebar Items ────────────────────────────────── */
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  padding: 8px 10px;
+  margin-bottom: 2px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.12s;
+}
+.sidebar-item:hover {
+  background: var(--bg-hover);
+}
+.sidebar-item.active {
+  background: var(--bg-active);
+  font-weight: 600;
+}
+.sidebar-item .item-title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.sidebar-item .item-actions {
+  display: flex;
+  gap: 2px;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+.sidebar-item:hover .item-actions {
+  opacity: 1;
+}
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px 12px;
+}
+.sidebar-header h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ── Toolbar ──────────────────────────────────────── */
+.toolbar {
+  display: flex;
+  gap: 4px;
+  padding: 8px 0;
+  flex-wrap: wrap;
+}
+.toolbar .btn {
+  font-size: 12px;
+  padding: 4px 10px;
+}
+
+/* ── Input ────────────────────────────────────────── */
+.input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-family: var(--font);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.input:focus {
+  border-color: var(--primary);
+}
+.input-lg {
+  padding: 10px 14px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* ── Chips ────────────────────────────────────────── */
+.chip {
+  display: inline-block;
+  border-radius: 12px;
+  background: var(--bg-active);
+  color: var(--primary);
+  padding: 3px 10px;
+  margin: 2px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* ── Cards ────────────────────────────────────────── */
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  margin: 8px 0;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+}
+.card h4 {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+.card p {
+  margin: 4px 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ── Modal ────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-card {
+  background: var(--bg);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: var(--shadow-lg);
+}
+.modal-card p {
+  margin: 0 0 16px;
+  font-size: 15px;
+}
+.modal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* ── Empty State ──────────────────────────────────── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ── Section headers (sidebar) ────────────────────── */
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 12px 10px 4px;
+}
+
+/* ── Backlink item ────────────────────────────────── */
+.backlink-item {
+  display: block;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  color: var(--primary);
+  text-decoration: none;
+  transition: background 0.12s;
+}
+.backlink-item:hover {
+  background: var(--bg-hover);
+}
+
+/* ── Synopsis board ───────────────────────────────── */
+.synopsis-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 12px 0;
+}
+
+/* ── Brief form ───────────────────────────────────── */
+.brief-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 0;
+}
+.brief-form .input {
+  font-size: 13px;
+}
+
+/* ── Project grid ─────────────────────────────────── */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+.project-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+  color: var(--text);
+}
+.project-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow);
+}
+.project-card h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+.project-card .meta {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ── CodeMirror overrides ─────────────────────────── */
+.cm-editor {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.cm-editor.cm-focused {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* ── Scene selector ───────────────────────────────── */
+.scene-selector {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-family: var(--font);
+}
+
+/* ── Home page ────────────────────────────────────── */
+.home-hero {
+  max-width: 600px;
+  margin: 60px auto;
+  text-align: center;
+}
+.home-hero h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+.home-hero p {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+.home-links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* ── Ideas list ───────────────────────────────────── */
+.ideas-list {
+  padding-left: 18px;
+  margin: 4px 0;
+}
+.ideas-list li {
+  font-size: 12px;
+  color: var(--text-muted);
+}
