@@ -1,0 +1,14 @@
+body { font-family: Arial, sans-serif; margin: 0; background:#f3f4f6; }
+header { display:flex; justify-content:space-between; padding:10px 16px; background:#111827; color:white; }
+nav button { margin-right:8px; }
+.tab { display:none; padding:12px; }
+.tab.active { display:block; }
+.three-col { display:grid; grid-template-columns: 1fr 2fr 1fr; gap:12px; }
+.two-col { display:grid; grid-template-columns: 1fr 2fr; gap:12px; }
+aside, section { background:white; border-radius:8px; padding:10px; }
+ul { list-style:none; padding:0; }
+li { padding:6px; border-bottom:1px solid #eee; cursor:pointer; }
+li.active { background:#dbeafe; }
+.toolbar button { margin-right:4px; margin-bottom:6px; }
+textarea, input { width:100%; box-sizing:border-box; margin:4px 0; }
+.chip { display:inline-block; border:1px solid #ddd; border-radius:999px; padding:3px 8px; margin:2px; }

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WritingTools Vibe</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <h1>WritingTools Vibe</h1>
+    <nav>
+      <button data-tab="script">Script Studio</button>
+      <button data-tab="knowledge">Knowledge Studio</button>
+      <button data-tab="outputs">Outputs</button>
+      <button data-tab="research">Research</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="script" class="tab active">
+      <div class="three-col">
+        <aside>
+          <h3>Scenes</h3>
+          <button id="newProjectBtn">프로젝트 생성</button>
+          <button id="addSceneBtn">씬 추가</button>
+          <ul id="sceneList"></ul>
+        </aside>
+        <section>
+          <h3>Scene Editor</h3>
+          <div class="toolbar">
+            <button data-snippet="1">1 Slugline</button>
+            <button data-snippet="2">2 Action</button>
+            <button data-snippet="3">3 Character</button>
+            <button data-snippet="4">4 Dialogue</button>
+            <button data-snippet="5">5 Transition</button>
+            <button id="exportFountain">Export .fountain</button>
+            <button id="exportTxt">Export .txt</button>
+          </div>
+          <input id="sceneTitle" placeholder="Scene title" />
+          <input id="sceneSlugline" placeholder="INT. ROOM - NIGHT" />
+          <textarea id="sceneBody" rows="16" placeholder="Scene body (CodeMirror placeholder)"></textarea>
+          <p id="autosaveStatus">자동 저장 대기</p>
+        </section>
+        <aside>
+          <h3>Context Tabs</h3>
+          <div id="contextNotes"></div>
+          <div id="contextBriefs"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="knowledge" class="tab">
+      <div class="two-col">
+        <aside>
+          <h3>Notes</h3>
+          <button id="addNoteBtn">노트 추가</button>
+          <ul id="noteList"></ul>
+        </aside>
+        <section>
+          <input id="noteTitle" placeholder="노트 제목" />
+          <label><input type="checkbox" id="isMoc" /> is_moc</label>
+          <textarea id="noteBody" rows="14" placeholder="Markdown with [[노트제목]]"></textarea>
+          <button id="saveNoteBtn">저장</button>
+          <button id="deleteNoteBtn">삭제</button>
+          <button id="makeOutputBtn" style="display:none">이 MOC로 Output 만들기</button>
+          <h4>백링크</h4>
+          <ul id="backlinks"></ul>
+        </section>
+      </div>
+    </section>
+
+    <section id="outputs" class="tab">
+      <div class="two-col">
+        <aside><ul id="outputList"></ul></aside>
+        <section>
+          <h3 id="outputTitle"></h3>
+          <pre id="outputBody"></pre>
+          <div id="sourceChips"></div>
+          <button id="makeScreenplayBtn">Screenplay 프로젝트로 만들기</button>
+        </section>
+      </div>
+    </section>
+
+    <section id="research" class="tab">
+      <div class="two-col">
+        <aside>
+          <button id="addTopicBtn">Topic 추가</button>
+          <ul id="topicList"></ul>
+        </aside>
+        <section>
+          <h3>Brief</h3>
+          <input id="briefTitle" placeholder="title" />
+          <textarea id="briefSummary" placeholder="summary"></textarea>
+          <input id="briefIdeas" placeholder='ideas_json (e.g. ["a","b"])' />
+          <input id="briefUrls" placeholder='source_urls_json (e.g. ["https://..."])' />
+          <input id="briefStatus" placeholder="status" value="draft" />
+          <button id="saveBriefBtn">Brief 저장</button>
+          <button id="clipBtn">클리핑으로 저장</button>
+          <input id="attachSceneId" placeholder="scene id" />
+          <button id="attachSceneBtn">이 씬에 붙이기</button>
+          <ul id="briefList"></ul>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="confirmDialog">
+    <p id="confirmText"></p>
+    <button id="confirmYes">확인</button>
+    <button id="confirmNo">취소</button>
+  </dialog>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
